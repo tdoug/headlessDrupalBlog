@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  drupal:
+    image: drupal:8.8.4-apache
+    ports:
+      - 8080:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+      - /var/www/html/sites/default
+      - /var/www/html/sites/files
+    restart: always
+
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+    - 5432:5432
+    restart: always
